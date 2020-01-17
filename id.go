@@ -19,11 +19,11 @@ func NextId(value string) (string, error) {
 		return value, fmt.Errorf("Invalid Id. Must be [a-z or A-Z]")
 	}
 
-	bytes = nextIdFrom(0, bytes)
+	bytes = incrementIdStartingAt(0, bytes)
 	return string(bytes), nil
 }
 
-func nextIdFrom(index int, value []byte) []byte {
+func incrementIdStartingAt(index int, value []byte) []byte {
 	letter := nextLetterAt(index, value)
 	value[index] = letter
 
