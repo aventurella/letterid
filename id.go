@@ -19,8 +19,8 @@ func NextId(value string) (string, error) {
 		return value, fmt.Errorf("Invalid Id. Must be [a-z or A-Z]")
 	}
 
-	bytes = incrementIdStartingAt(0, bytes)
-	return string(bytes), nil
+	result := string(incrementIdStartingAt(0, bytes))
+	return result, nil
 }
 
 func incrementIdStartingAt(index int, value []byte) []byte {
