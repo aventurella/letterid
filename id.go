@@ -24,13 +24,14 @@ func NextId(value string) (string, error) {
 }
 
 func incrementIdStartingAt(index int, value []byte) []byte {
+	sourceLength := len(value)
 	letter := nextLetterAt(index, value)
 	value[index] = letter
 
 	for letter == capitalA {
 		index = index + 1
 
-		if len(value) == index {
+		if sourceLength == index {
 			value = append(value, capitalA)
 			break
 		} else {

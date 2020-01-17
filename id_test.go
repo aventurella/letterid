@@ -5,6 +5,12 @@ import (
 	"testing"
 )
 
+func TestIncrementIdStartingAt(t *testing.T) {
+	id := []byte("XZZ")
+	result := string(incrementIdStartingAt(2, id))
+	assert.Equal(t, "XZAA", result)
+}
+
 func TestNextIdInvalid(t *testing.T) {
 	id := "a1"
 	result, err := NextId(id)
