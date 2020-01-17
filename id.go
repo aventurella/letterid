@@ -25,7 +25,7 @@ func NextId(value string) (string, error) {
 
 func incrementIdStartingAt(index int, value []byte) []byte {
 	sourceLength := len(value)
-	letter := nextLetterAt(index, value)
+	letter := nextLetter(value[index])
 	value[index] = letter
 
 	for letter == capitalA {
@@ -35,7 +35,7 @@ func incrementIdStartingAt(index int, value []byte) []byte {
 			value = append(value, capitalA)
 			break
 		} else {
-			letter = nextLetterAt(index, value)
+			letter = nextLetter(value[index])
 			value[index] = letter
 		}
 	}
@@ -43,9 +43,8 @@ func incrementIdStartingAt(index int, value []byte) []byte {
 	return value
 }
 
-func nextLetterAt(index int, value []byte) byte {
-	candidateChar := value[index]
-	nextChar := candidateChar + 1
+func nextLetter(value byte) byte {
+	nextChar := value + 1
 
 	if nextChar > capitalZ {
 		return capitalA
