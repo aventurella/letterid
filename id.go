@@ -16,7 +16,7 @@ func NextId(value string) (string, error) {
 	matched, _ := regexp.Match(`^[A-Z]+$`, bytes)
 
 	if !matched {
-		return value, fmt.Errorf("Invalid Id. Must be [a-z or A-Z]")
+		return value, fmt.Errorf("Invalid value. Must be [a-z or A-Z]")
 	}
 
 	result := string(incrementIdStartingAt(0, bytes))
